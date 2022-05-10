@@ -36,7 +36,7 @@ render() {
   const { movies, selectedMovie } = this.state;
 
 
-  if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+  if (movies.length === 0) return <div className="main-view"/>;
 
   return (
     <div className="main-view">
@@ -48,6 +48,7 @@ render() {
       }
     </div>
   );
-}
+ }
+
 export default MainView;
 
