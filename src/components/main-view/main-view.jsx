@@ -8,14 +8,22 @@ export class MainView extends React.Component{
   constructor() {
     super();
     this.state = {
-      movies: [
-        { _id: 1, Title: 'Inception', Description: 'desc1...', ImagePath: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg"},
-        { _id: 2, Title: 'The Shawshank Redemption', Description: 'desc2...', ImagePath: '...'},
-        { _id: 3, Title: 'Gladiator', Description: 'desc3...', ImagePath: '...'}
-      ],
+      movies: [],
       selectedMovie: null
-    };
+    }
   }
+}
+
+componentDidMount(){
+  axios.get('https://agile-dusk-10644.herokuapp.com/')
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
 
 setSelectedMovie(newSelectedMovie) {
