@@ -12,7 +12,7 @@ export class MainView extends React.Component{
       selectedMovie: null
     }
   }
-}
+
 
 componentDidMount(){
   axios.get('https://agile-dusk-10644.herokuapp.com/')
@@ -49,6 +49,7 @@ render() {
     </div>
   );
  }
+}
 
 export default MainView;
 
