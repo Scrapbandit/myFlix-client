@@ -6,7 +6,9 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
 
     return (
-      <div onClick={() => onMovieClick(movie)} className="movie-card">{movie.Title}</div>
+      <div onClick={() => onMovieClick(movie)} 
+      className="movie-card">{movie.Title}
+      </div>
     );
   }
 }
@@ -17,7 +19,11 @@ MovieCard.propTypes = {
     Description: PropTypes.string.isRequired,
     ImageURL: PropTypes.string.isRequired,
     Genre: PropTypes.shape({
-    })
+      Name: PropTypes.string,
+    }),
+    Director: PropTypes.shape({
+      Name: PropTypes.string,
+    }),
   }).isRequired,
   onMovieClick: PropTypes.func.isRequired
 };
