@@ -10,7 +10,7 @@ export class MovieView extends React.Component {
     return (
       <div className="movie-view">
         <div className="movie-poster">
-          <img src={movie.ImageURL} />
+          <img src={movie.ImagePath} />
         </div>
         <div className="movie-title">
           <span className="label">Title: </span>
@@ -55,6 +55,6 @@ MovieView.propTypes = {
       Name: PropTypes.string.isRequired,
       Bio: PropTypes.string.isRequired,
     }),
-    ImageURL: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
   }).isRequired,
 };
