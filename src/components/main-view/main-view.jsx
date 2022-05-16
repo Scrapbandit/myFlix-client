@@ -18,6 +18,12 @@ export class MainView extends React.Component{
             "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
           ImageURL:
             "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
+            Genre: ({
+              Name: "Thriller",
+          }),
+          Director: ({
+            Name: "",
+          })
         },
         {
           _id: 2,
@@ -27,8 +33,11 @@ export class MainView extends React.Component{
           ImageURL:
             "https://m.media-amazon.com/images/M/MV5BNTYxOTYyMzE3NV5BMl5BanBnXkFtZTcwOTMxNDY3Mw@@._V1_.jpg",
           Genre: ({
-              Name: "Thriller",
+              Name: "",
           }),
+          Director: ({
+            Name: "",
+        }),
         },
         {
           _id: 3,
@@ -37,7 +46,13 @@ export class MainView extends React.Component{
             "Gladiator is a 2000 epic historical drama film directed by Ridley Scott and written by David Franzoni, John Logan, and William Nicholson.",
           ImageURL:
             "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
-        },
+            Genre: ({
+              Name: "",
+          }),
+          Director: ({
+            Name: "",
+        }),
+       },
       ],
       selectedMovie: null,
       registered: null,

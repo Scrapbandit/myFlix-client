@@ -25109,7 +25109,13 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     Title: "Inception",
                     Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
-                    ImageURL: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg"
+                    ImageURL: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg",
+                    Genre: {
+                        Name: "Thriller"
+                    },
+                    Director: {
+                        Name: ""
+                    }
                 },
                 {
                     _id: 2,
@@ -25117,14 +25123,23 @@ class MainView extends _reactDefault.default.Component {
                     Description: "The Shawshank Redemption is a 1994 American drama film written and directed by Frank Darabont, based on the 1982 Stephen King novella Rita Hayworth",
                     ImageURL: "https://m.media-amazon.com/images/M/MV5BNTYxOTYyMzE3NV5BMl5BanBnXkFtZTcwOTMxNDY3Mw@@._V1_.jpg",
                     Genre: {
-                        Name: "Thriller"
+                        Name: ""
+                    },
+                    Director: {
+                        Name: ""
                     }
                 },
                 {
                     _id: 3,
                     Title: "Gladiator",
                     Description: "Gladiator is a 2000 epic historical drama film directed by Ridley Scott and written by David Franzoni, John Logan, and William Nicholson.",
-                    ImageURL: "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png"
+                    ImageURL: "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png",
+                    Genre: {
+                        Name: ""
+                    },
+                    Director: {
+                        Name: ""
+                    }
                 }, 
             ],
             selectedMovie: null,
@@ -25164,7 +25179,7 @@ class MainView extends _reactDefault.default.Component {
             onRegister: (bool)=>this.onRegister(bool)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 83,
+            lineNumber: 98,
             columnNumber: 12
         }, this);
         if (!user1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
@@ -25173,14 +25188,14 @@ class MainView extends _reactDefault.default.Component {
             onRegister: (bool)=>this.onRegister(bool)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 87,
+            lineNumber: 102,
             columnNumber: 13
         }, this);
         if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 94,
+            lineNumber: 109,
             columnNumber: 35
         }, this);
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -25192,7 +25207,7 @@ class MainView extends _reactDefault.default.Component {
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 99,
+                lineNumber: 114,
                 columnNumber: 13
             }, this) : movies.map((movie)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
                     movie: movie,
@@ -25201,13 +25216,13 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 103,
+                    lineNumber: 118,
                     columnNumber: 11
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 97,
+            lineNumber: 112,
             columnNumber: 5
         }, this);
     }
