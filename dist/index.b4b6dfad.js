@@ -25104,21 +25104,45 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            movies: [],
+            movies: [
+                {
+                    _id: 1,
+                    Title: "Inception",
+                    Description: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.",
+                    ImageURL: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX1000_.jpg"
+                },
+                {
+                    _id: 2,
+                    Title: "The Shawshank Redemption",
+                    Description: "The Shawshank Redemption is a 1994 American drama film written and directed by Frank Darabont, based on the 1982 Stephen King novella Rita Hayworth",
+                    ImageURL: "https://m.media-amazon.com/images/M/MV5BNTYxOTYyMzE3NV5BMl5BanBnXkFtZTcwOTMxNDY3Mw@@._V1_.jpg",
+                    Genre: {
+                        Name: "Thriller"
+                    }
+                },
+                {
+                    _id: 3,
+                    Title: "Gladiator",
+                    Description: "Gladiator is a 2000 epic historical drama film directed by Ridley Scott and written by David Franzoni, John Logan, and William Nicholson.",
+                    ImageURL: "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png"
+                }, 
+            ],
             selectedMovie: null,
             registered: null,
             user: null
         };
     }
-    componentDidMount() {
-        _axiosDefault.default.get('https://agile-dusk-10644.herokuapp.com/').then((response)=>{
-            this.setState({
-                movies: response.data
-            });
-        }).catch((error)=>{
-            console.log(error);
-        });
-    }
+    // componentDidMount(){ 
+    //   axios.get('https://agile-dusk-10644.herokuapp.com/')
+    //     .then(response => {
+    //       this.setState({
+    //         movies: response.data
+    //       });
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    // }
     setSelectedMovie(newSelectedMovie) {
         this.setState({
             selectedMovie: newSelectedMovie
@@ -25140,7 +25164,7 @@ class MainView extends _reactDefault.default.Component {
             onRegister: (bool)=>this.onRegister(bool)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 55,
+            lineNumber: 83,
             columnNumber: 12
         }, this);
         if (!user1) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_loginView.LoginView, {
@@ -25149,14 +25173,14 @@ class MainView extends _reactDefault.default.Component {
             onRegister: (bool)=>this.onRegister(bool)
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 59,
+            lineNumber: 87,
             columnNumber: 13
         }, this);
         if (movies.length === 0) return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
             className: "main-view"
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 66,
+            lineNumber: 94,
             columnNumber: 35
         }, this);
         return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("div", {
@@ -25168,7 +25192,7 @@ class MainView extends _reactDefault.default.Component {
                 }
             }, void 0, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 71,
+                lineNumber: 99,
                 columnNumber: 13
             }, this) : movies.map((movie)=>/*#__PURE__*/ _jsxDevRuntime.jsxDEV(_movieCard.MovieCard, {
                     movie: movie,
@@ -25177,13 +25201,13 @@ class MainView extends _reactDefault.default.Component {
                     }
                 }, movie._id, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 75,
+                    lineNumber: 103,
                     columnNumber: 11
                 }, this)
             )
         }, void 0, false, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 69,
+            lineNumber: 97,
             columnNumber: 5
         }, this);
     }
@@ -29849,105 +29873,105 @@ function RegistrationView(props) {
     const [password, setPassword] = _react.useState("");
     const [email, setEmail] = _react.useState("");
     const [birthday, setBirthday] = _react.useState("");
-    const handleSubmit = (e1)=>{
-        e1.preventDefault();
+    const handleSubmit = (e)=>{
+        e.preventDefault();
         console.log(username, password, email, birthday);
-        return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
-            children: [
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
-                    children: [
-                        "Username:",
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
-                            type: "text",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value)
-                        }, void 0, false, {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 19,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 17,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
-                    children: [
-                        "Password:",
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
-                            type: "password",
-                            value: password,
-                            onChange: (e)=>setPassword(e.target.value)
-                        }, void 0, false, {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 27,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 25,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
-                    children: [
-                        "Email:",
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
-                            type: "email",
-                            value: email,
-                            onChange: (e)=>setEmail(e.target.value)
-                        }, void 0, false, {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 35,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 33,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
-                    children: [
-                        "Birthday:",
-                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
-                            type: "date",
-                            value: birthday,
-                            onChange: (e)=>setBirthday(e.target.value)
-                        }, void 0, false, {
-                            fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 43,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 41,
-                    columnNumber: 9
-                }, this),
-                /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
-                    type: "submit",
-                    onClick: handleSubmit,
-                    children: "Submit"
-                }, void 0, false, {
-                    fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 49,
-                    columnNumber: 9
-                }, this)
-            ]
-        }, void 0, true, {
-            fileName: "src/components/registration-view/registration-view.jsx",
-            lineNumber: 16,
-            columnNumber: 7
-        }, this);
     };
-    RegistrationView.propTypes = {
-        onLoggedIn: propTypes.func.isRequired
-    };
+    return /*#__PURE__*/ _jsxDevRuntime.jsxDEV("form", {
+        children: [
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
+                children: [
+                    "Username:",
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "text",
+                        value: username,
+                        onChange: (e)=>setUsername(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/components/registration-view/registration-view.jsx",
+                        lineNumber: 20,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 18,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
+                children: [
+                    "Password:",
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "password",
+                        value: password,
+                        onChange: (e)=>setPassword(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/components/registration-view/registration-view.jsx",
+                        lineNumber: 28,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 26,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
+                children: [
+                    "Email:",
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/components/registration-view/registration-view.jsx",
+                        lineNumber: 36,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 34,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("label", {
+                children: [
+                    "Birthday:",
+                    /*#__PURE__*/ _jsxDevRuntime.jsxDEV("input", {
+                        type: "date",
+                        value: birthday,
+                        onChange: (e)=>setBirthday(e.target.value)
+                    }, void 0, false, {
+                        fileName: "src/components/registration-view/registration-view.jsx",
+                        lineNumber: 44,
+                        columnNumber: 11
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 42,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ _jsxDevRuntime.jsxDEV("button", {
+                type: "submit",
+                onClick: handleSubmit,
+                children: "Submit"
+            }, void 0, false, {
+                fileName: "src/components/registration-view/registration-view.jsx",
+                lineNumber: 50,
+                columnNumber: 9
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "src/components/registration-view/registration-view.jsx",
+        lineNumber: 17,
+        columnNumber: 7
+    }, this);
 }
 _s(RegistrationView, "jsOQN3GC2XlBG9ITlzCdpyJOnso=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    onLoggedIn: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
