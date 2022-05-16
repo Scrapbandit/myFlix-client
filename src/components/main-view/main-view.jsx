@@ -18,8 +18,8 @@ export class MainView extends React.Component{
   }
 
 
-componentDidMount(){
-  axios.get('https://agile-dusk-10644.herokuapp.com/')
+componentDidMount(){ 
+  axios.get('https://agile-dusk-10644.herokuapp.com/movies/')
     .then(response => {
       this.setState({
         movies: response.data
