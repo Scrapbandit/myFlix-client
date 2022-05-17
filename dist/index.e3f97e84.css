@@ -2,7 +2,12 @@
 
 
 
-
+* {
+  box-sizing: border-box;
+  color: #d3c5c5;
+  background-color: #3c3b3b;
+  font-family: Gill Sans, sans-serif;
+}
 
 
 
