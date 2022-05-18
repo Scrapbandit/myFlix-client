@@ -32084,6 +32084,16 @@ function LoginView(props) {
                             fileName: "src/components/login-view/login-view.jsx",
                             lineNumber: 43,
                             columnNumber: 7
+                        }, this),
+                        /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_buttonDefault.default, {
+                            variant: "light",
+                            type: "register",
+                            onClick: handleRegister,
+                            children: "Register"
+                        }, void 0, false, {
+                            fileName: "src/components/login-view/login-view.jsx",
+                            lineNumber: 46,
+                            columnNumber: 7
                         }, this)
                     ]
                 }, void 0, true, {
@@ -32161,7 +32171,8 @@ function RegistrationView(props) {
                         children: /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Body, {
                             children: [
                                 /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Card.Header, {
-                                    children: "Please Register"
+                                    variant: "light",
+                                    children: "Please Register "
                                 }, void 0, false, {
                                     fileName: "src/components/registration-view/registration-view.jsx",
                                     lineNumber: 24,

@@ -21,7 +21,7 @@ export function RegistrationView(props) {
          <CardGroup>
            <Card>
             <Card.Body>
-             <Card.Header>Please Register</Card.Header>
+             <Card.Header variant= "light">Please Register </Card.Header>
              <Form>
               <Form.Group>
                 <Form.Label>Username:</Form.Label>
