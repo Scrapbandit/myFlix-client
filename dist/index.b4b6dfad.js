@@ -32289,6 +32289,7 @@ function RegistrationView(props) {
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ _jsxDevRuntime.jsxDEV(_reactBootstrap.Button, {
+                                            variant: "light",
                                             type: "submit",
                                             onClick: handleSubmit,
                                             children: "Register"

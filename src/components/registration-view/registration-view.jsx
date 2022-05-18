@@ -63,7 +63,7 @@ export function RegistrationView(props) {
                    required
                     />
                   </Form.Group>
-                    <Button type="submit" onClick={handleSubmit}>
+                    <Button variant="light" type="submit" onClick={handleSubmit}>
                       Register
                   </Button>
                  </Form>
