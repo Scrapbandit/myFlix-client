@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./registration-view.scss";
-import { Form, Button, Container, Row, Col, Card, CardGroup } from 'react-bootstrap';
+import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootstrap';
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -76,6 +76,12 @@ export function RegistrationView(props) {
           );
          }
 
-RegistrationView.propTypes = {
-  onLoggedIn: PropTypes.func.isRequired,
-};
+         RegistrationView.propTypes = {
+          register: PropTypes.shape({
+              Username: PropTypes.string.isRequired,
+              Password: PropTypes.string.isRequired,
+              Email: PropTypes.string.isRequired,
+              Birthday: PropTypes.string.isRequired,
+            }).isRequired,
+            onRegistration: PropTypes.func.isRequired,
+          };
