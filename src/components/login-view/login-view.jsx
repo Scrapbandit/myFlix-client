@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import axios from 'axios';
 import "./login-view.scss";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import { Container, Row, Col } from "react-bootstrap";
+import { Form, Button } from 'react-bootstrap';
+
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -11,8 +11,18 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    props.onLoggedIn(username);
+    axios.post('https://agile-dusk-10644.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    })
+    .then(response => {
+      const data = response.data;
+      props.onLoggedIn(data);
+    })
+    
+    .catch(e => {
+      console.log('no such user')
+    });
   };
 
   const handleRegister = (e) => {
@@ -21,14 +31,12 @@ export function LoginView(props) {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col> 
         <Form>
       <Form.Group controlId="formUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type="text"
+          placeholder="Enter username" value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
       </Form.Group>
@@ -37,6 +45,7 @@ export function LoginView(props) {
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type="password"
+          placeholder="Enter password" value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </Form.Group>
@@ -47,9 +56,10 @@ export function LoginView(props) {
         Register
       </Button>
     </Form>
-        </Col>
-      </Row>
-    </Container>
+   
+
+        
+    
    
   );
 }

@@ -17,17 +17,40 @@ export class MovieView extends React.Component {
               <Card id="movie-view">
                   <Card.Body>
                   <Card.Img id="movie-view-image" variant="top" src={movie.ImagePath} />
-                  <Card.Title id="movie-title" className="movie-title">{movie.Title}</Card.Title>
+                  <Card.Title id="movie-title" className="movie-title">{movie.Title}
+                  <Link to={`/movies/${movie._id}`}>
+                  <Button variant="light">Open</Button>
+                   </Link>
+                   </Card.Title>
                   <Card.Text id="movie-description" className="movie-description">
-                      {movie.Description}</Card.Text>
+                      {movie.Description}
+                      <Link to={`/movies/${movie.Description}`}>
+                      <Button variant="light">Plot</Button>
+                   </Link>
+                      </Card.Text>
                   <Card.Text id="movie-director" className="movie-director">
-                      Director: {movie.Director.Name}</Card.Text>
+                      Director: {movie.Director.Name}
+                      <Link to={`/directors/${movie.Director.Name}`}>
+                      <Button variant="light">Director</Button>
+                      </Link>
+                      </Card.Text>
                   <Card.Text id="director-bio" className="director-bio">
-                      Bio: {movie.Director.Bio}</Card.Text>
+                      Bio: {movie.Director.Bio}
+                      <Link to={`/directors/${movie.Director.Bio}`}>
+                      <Button variant="light">Director</Button>
+                      </Link>
+                      </Card.Text>
                   <Card.Text id="movie-genre" className="movie-gerne">
-                      Genre: {movie.Genre.Name}</Card.Text>
+                      Genre: {movie.Genre.Name}
+                       <Link to={`/genres/${movie.Genre.Name}`}>
+                       <Button variant="light">Genre</Button>
+                       </Link>
+                       </Card.Text>
                   <Card.Text id="genre-description" className="gerne-description">
-                      Description: {movie.Genre.Description}</Card.Text>
+                      Description: {movie.Genre.Description}
+                      <Link to={`/genres/${movie.Genre.Description}`}>
+                       <Button variant="light">Description</Button>
+                       </Link></Card.Text>
                   <Button variant="light" id="movie-view-button" onClick={() => { onBackClick(null); }}>Back</Button>
                   </Card.Body>
               </Card>

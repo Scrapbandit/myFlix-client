@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { CardGroup, Container } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
   render() {
@@ -17,7 +18,9 @@ export class MovieCard extends React.Component {
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
+          <Link to={`/movies/${movie._id}`}>
           <Button onClick={() => onMovieClick(movie)} variant="light">Open</Button>
+          </Link>
         </Card.Body>
       </Card>
     );

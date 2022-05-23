@@ -2,17 +2,57 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./registration-view.scss";
 import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootstrap';
+import axios from "axios";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthday, setBirthday] = useState("");
+  const [ usernameErr, setUsernameErr ] = useState('');
+  const [ passwordErr, setPasswordErr ] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(username, password, email, birthday);
-  };
+  const validate = () => {
+    let isReq = true;
+    if(!username){
+     setUsernameErr('Username Required');
+     isReq = false;
+    }else if(username.length < 2){
+     setUsernameErr('Username must be 2 characters long');
+     isReq = false;
+    }
+    if(!password){
+     setPasswordErr('Password Required');
+     isReq = false;
+    }else if(password.length < 6){
+     setPassword('Password must be 6 characters long');
+     isReq = false;
+    }
+
+    return isReq;
+}
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const isReq = validate();
+  if(isReq) {
+    /* Send request to the server for authentication */
+    axios.post('https://agile-dusk-10644.herokuapp.com/users', {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self'); 
+    })
+    .catch(e => {
+      console.log('error registering the user')
+    });
+  }
+};
 
   return (
   <Container>
@@ -21,28 +61,26 @@ export function RegistrationView(props) {
          <CardGroup>
            <Card>
             <Card.Body>
-             <Card.Header variant= "light">Please Register </Card.Header>
+             <Card.Header>Please Register </Card.Header>
              <Form>
-              <Form.Group>
+              <Form.Group controlId="formUsername">
                 <Form.Label>Username:</Form.Label>
-                 <Form.Control
-                   type="text"
-                   value={username}
-                   onChange={(e) => setUsername(e.target.value)}
-                   required
-                   placeholder="Enter a username"
-                  />
+                <Form.Control type="text" 
+                placeholder="Enter username" 
+                value={username} onChange={e => 
+                setUsername(e.target.value)}/>
+                {usernameErr && <p>{usernameErr}</p>}
                 </Form.Group>
-               <Form.Group>
+
+               <Form.Group controlId="formPassword">
               <Form.Label>Password</Form.Label>
              <Form.Control
               type="password"
+              minLength="6"
+              placeholder="Password must have 6 or more characters"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength="8"
-              placeholder="Password must have 8 or more characters"
-             />
+              onChange={e => setPassword(e.target.value)}/>
+             {passwordErr && <p>{passwordErr}</p>}
            </Form.Group>
              <Form.Group>
               <Form.Label>Email</Form.Label>
@@ -63,7 +101,7 @@ export function RegistrationView(props) {
                    required
                     />
                   </Form.Group>
-                    <Button variant="light" type="submit" onClick={handleSubmit}>
+                    <Button variant="light"  type="submit" onClick={handleSubmit}>
                       Register
                   </Button>
                  </Form>

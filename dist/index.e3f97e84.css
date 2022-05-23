@@ -9,7 +9,10 @@
   font-family: Gill Sans, sans-serif;
 }
 
-
+.card-header {
+  color: #a01e1e !important;
+  background-color: #dedee1 !important;
+}
 
 
 
