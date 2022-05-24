@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./main-view.scss";
 import { Form, Button, Container, Row, Col, Card, CardGroup } from "react-bootstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import { RegistrationView } from "../registration-view/registration-view";
 import { LoginView } from "../login-view/login-view";
 import { MovieCard } from "../movie-card/movie-card";
@@ -77,37 +77,53 @@ export class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, registered } = this.state;
 
-    if (registered) {
-      return <RegistrationView onRegister={(bool) => this.onRegister(bool)} />;
-    }
+    // if (registered) {
+    //   return <RegistrationView onRegister={(bool) => this.onRegister(bool)} />;
+    // }
 
-    if (!user) {
-      return (
-        <LoginView
-          onLoggedIn={(user) => this.onLoggedIn(user)}
-          onRegister={(bool) => this.onRegister(bool)}
-        />
-      );
-    }
+    
+    // if (!user) {
+    //   return (
+    //     <LoginView
+    //       onLoggedIn={(user) => this.onLoggedIn(user)}
+    //       onRegister={(bool) => this.onRegister(bool)}
+    //     />
+    //   );
+    // }
 
-    if (movies.length === 0) return <div className="main-view" />;
+    // if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <Router>
+        <Routes>
+        {/* I Dont know where should I close the code here for the error */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
-            return movies.map(m => (
+            if (!user) return <Col>
+            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
+            </Col>
+            if (movies.length === 0) return <div className="main-view">
+              return movies.map((m) => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />
               </Col>
             ))
           }} />
+          <Route path="/register" render={() => {
+           if (user) return <Redirect to="/" />
+           return <Col>
+            <RegistrationView />
+           </Col>
+           }} />
+          
+
           <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={8}>
               <MovieView movie={movies.find(m => m._id === match.params.movieId)} 
               onBackClick={() => history.goBack()} /> 
             </Col>
           }} />
+
           <Route path="/genres/:name" render={({ match, history }) => {
            if (movies.length === 0) return <div className="main-view" />;
              return <Col md={8}>
@@ -115,6 +131,7 @@ export class MainView extends React.Component {
              onBackClick={() => history.goBack()} />
             </Col>
           }} />
+
           <Route path="/directors/:name" render={({ match, history }) => {
            if (movies.length === 0) return <div className="main-view" />;
              return <Col md={8}>
@@ -123,7 +140,14 @@ export class MainView extends React.Component {
             </Col>
           }} />
 
-        </Row>
+           <Route path='/users/:username' render={({history, match}) => {
+              if (!user) return <LoginView
+               onLoggedIn={user => this.onLoggedIn(user)} />
+               If (movies.length === 0) return <div className="main-view"/>
+                return
+            <ProfileView history={history} movies={movies} user={user === match.params.username} />
+          }} />
+         </Row>
       </Router>
     );
   }

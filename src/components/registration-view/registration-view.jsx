@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./registration-view.scss";
 import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootstrap';
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
@@ -27,6 +28,13 @@ export function RegistrationView(props) {
     }else if(password.length < 6){
      setPassword('Password must be 6 characters long');
      isReq = false;
+    }
+    if(!email){
+      setEmailErr('Add Email');
+      isReq = false;
+    } else if(email.indexOf('@') === -1){
+      setEmail('Invalid Email');
+      isReq = false; 
     }
 
     return isReq;
