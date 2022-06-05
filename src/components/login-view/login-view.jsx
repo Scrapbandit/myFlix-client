@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import axios from 'axios';
 import "./login-view.scss";
 import { Form, Button } from 'react-bootstrap';
-
+import { Link } from "react-router-dom";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");

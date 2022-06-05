@@ -1,5 +1,21 @@
 
 
+* {
+  box-sizing: border-box;
+  color: #d3c5c5;
+  background-color: #3c3b3b;
+  font-family: Gill Sans, sans-serif;
+}
+
+.card-header {
+  color: #a01e1e !important;
+  background-color: #dedee1 !important;
+}
+
+
+
+
+
 .my-flix {
   color: #4682b4;
 }
