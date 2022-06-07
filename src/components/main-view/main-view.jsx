@@ -95,7 +95,6 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        {/* I Dont know where should I close the code here for the error */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>
