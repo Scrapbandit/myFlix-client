@@ -95,14 +95,13 @@ export class MainView extends React.Component {
 
     return (
       <Router>
-        <Routes>
         {/* I Dont know where should I close the code here for the error */}
         <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             if (!user) return <Col>
             <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
             </Col>
-            if (movies.length === 0) return <div className="main-view">
+            if (movies.length === 0) return <div className="main-view"/>
               return movies.map((m) => (
               <Col md={3} key={m._id}>
                 <MovieCard movie={m} />
@@ -143,7 +142,8 @@ export class MainView extends React.Component {
            <Route path='/users/:username' render={({history, match}) => {
               if (!user) return <LoginView
                onLoggedIn={user => this.onLoggedIn(user)} />
-               If (movies.length === 0) return <div className="main-view"/>
+               If (movies.length === 0) 
+               return <div className="main-view"/>
                 return
             <ProfileView history={history} movies={movies} user={user === match.params.username} />
           }} />
