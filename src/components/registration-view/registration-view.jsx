@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, CardGroup, Form, Button } from 'react-bootst
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
