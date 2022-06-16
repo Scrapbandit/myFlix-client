@@ -16,7 +16,7 @@ export class MovieView extends React.Component {
           <Col>
               <Card id="movie-view">
                   <Card.Body>
-                  <Card.Img id="movie-view-image" variant="top" src={movie.ImagePath} />
+                  <Card.Img id="movie-view-image" variant="top" crossOrigin="anonymous" src={movie.ImagePath} />
                   <Card.Title id="movie-title" className="movie-title">{movie.Title}
                   <Link to={`/movies/${movie._id}`}>
                   <Button variant="light">Open</Button>
