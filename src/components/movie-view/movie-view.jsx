@@ -18,43 +18,32 @@ export class MovieView extends React.Component {
                 <Card.Img
                   id="movie-view-image"
                   variant="top"
+                  crossOrigin="anonymous"
                   src={movie.ImagePath}
                 />
                 <Card.Title id="movie-title" className="movie-title">
                   {movie.Title}
-                  <Link to={`/movies/${movie._id}`}>
-                    <Button variant="light">Open</Button>
-                  </Link>
+                  <Link to={`/movies/${movie._id}`}></Link>
                 </Card.Title>
                 <Card.Text id="movie-description" className="movie-description">
                   {movie.Description}
-                  <Link to={`/movies/${movie.Description}`}>
-                    <Button variant="light">Plot</Button>
-                  </Link>
+                  <Link to={`/movies/${movie.Description}`}></Link>
                 </Card.Text>
                 <Card.Text id="movie-director" className="movie-director">
                   Director: {movie.Director.Name}
-                  <Link to={`/directors/${movie.Director.Name}`}>
-                    <Button variant="light">Director</Button>
-                  </Link>
+                  <Link to={`/directors/${movie.Director.Name}`}></Link>
                 </Card.Text>
                 <Card.Text id="director-bio" className="director-bio">
                   Bio: {movie.Director.Bio}
-                  <Link to={`/directors/${movie.Director.Bio}`}>
-                    <Button variant="light">Director</Button>
-                  </Link>
+                  <Link to={`/directors/${movie.Director.Bio}`}></Link>
                 </Card.Text>
                 <Card.Text id="movie-genre" className="movie-gerne">
                   Genre: {movie.Genre.Name}
-                  <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button variant="light">Genre</Button>
-                  </Link>
+                  <Link to={`/genres/${movie.Genre.Name}`}></Link>
                 </Card.Text>
                 <Card.Text id="genre-description" className="gerne-description">
                   Description: {movie.Genre.Description}
-                  <Link to={`/genres/${movie.Genre.Description}`}>
-                    <Button variant="light">Description</Button>
-                  </Link>
+                  <Link to={`/genres/${movie.Genre.Description}`}></Link>
                 </Card.Text>
                 <Button
                   variant="light"

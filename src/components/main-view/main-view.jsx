@@ -2,21 +2,8 @@ import React from "react";
 import axios from "axios";
 import "./main-view.scss";
 import { connect } from "react-redux";
-import {
-  Form,
-  Button,
-  Container,
-  Row,
-  Col,
-  Card,
-  CardGroup,
-} from "react-bootstrap";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Link,
-} from "react-router-dom";
+import { Form, Button, Container, Row, Col, Card, CardGroup } from "react-bootstrap";
+import {BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import { setMovies } from "../../actions/actions";
 import MoviesList from "../movies-list/movies-list";
 import { RegistrationView } from "../registration-view/registration-view";
