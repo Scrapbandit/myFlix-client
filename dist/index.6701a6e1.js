@@ -44176,6 +44176,7 @@ function LoginView(props) {
     _s();
     const [username, setUsername] = _react.useState("");
     const [password, setPassword] = _react.useState("");
+    const history = _reactRouterDom.useHistory();
     const handleSubmit = (e)=>{
         e.preventDefault();
         _axiosDefault.default.post('https://agile-dusk-10644.herokuapp.com/login', {
@@ -44273,7 +44274,9 @@ function LoginView(props) {
             /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
                 variant: "light",
                 type: "register",
-                onClick: handleRegister,
+                onClick: ()=>{
+                    history.push("register");
+                },
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
                     lineNumber: 57
@@ -44284,7 +44287,9 @@ function LoginView(props) {
         ]
     }));
 }
-_s(LoginView, "Lrw7JeD9zj6OUWhT/IH4OIvPKEk=");
+_s(LoginView, "/nE+1o6xRAtcM7F1DwdqQmRYBrw=", false, function() {
+    return [_reactRouterDom.useHistory];
+});
 _c = LoginView;
 LoginView.propTypes = {
     user: _propTypesDefault.default.shape({

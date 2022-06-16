@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import axios from 'axios';
 import "./login-view.scss";
 import { Form, Button } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-
-
+import { Link, useHistory } from "react-router-dom";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +54,10 @@ export function LoginView(props) {
       <Button variant="light" type="submit" onClick={handleSubmit}>
         Submit
       </Button>
-      <Button variant="light" type="register" onClick={handleRegister}>
+      <Button variant="light" type="register" onClick={() => {
+          history.push("register");
+        }}
+      >
         Register
       </Button>
     </Form>
