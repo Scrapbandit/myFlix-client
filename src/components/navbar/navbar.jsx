@@ -3,6 +3,9 @@ import { NavBar, Button, Container, Nav, Navbar } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./navbar.scss";
+import { setUser } from '../../actions/actions';
+import { connect } from 'react-redux';
+
 
 export function MenuBar({ user }) {
   const onLoggedOut = () => {
@@ -22,12 +25,7 @@ export function MenuBar({ user }) {
   };
   return (
     <Navbar
-      className="main-nav"
-      sticky="top"
-      bg="light"
-      expand="lg"
-      variant="light"
-    >
+      className="main-nav" sticky="top" bg="light" expand="lg" variant="light">
       <Container>
         <Navbar.Brand className="navbar-logo" href="/">
           MyFlix
@@ -36,16 +34,7 @@ export function MenuBar({ user }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
             {isAuth() && <Nav.Link href={"/users/${user}"}>{user}</Nav.Link>}
-            {isAuth() && (
-              <Button
-                variant="link"
-                onClick={() => {
-                  this.onLoggedOut();
-                }}
-              >
-                Logout
-              </Button>
-            )}
+            {isAuth() && ( <Button variant="light" onClick={() => { onLoggedOut() }}>Logout</Button>)}
             {!isAuth() && <Nav.Link href="/">Sign-in</Nav.Link>}
             {!isAuth() && <Nav.Link href="/register">Sign-up</Nav.Link>}
           </Nav>
@@ -54,3 +43,11 @@ export function MenuBar({ user }) {
     </Navbar>
   );
 }
+let mapStateToProps = state => {
+  return {
+      movies: state.movies,
+      user: state.user
+  };
+}
+
+export default connect(mapStateToProps, { setUser })(MenuBar);

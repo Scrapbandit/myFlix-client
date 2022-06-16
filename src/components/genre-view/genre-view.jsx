@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Col, Row, Button }from 'react-bootstrap';
 import './genre-view.scss';
+import { connect } from 'react-redux';
 
 export class GenreView extends React.Component {
 
