@@ -1,4 +1,4 @@
-import React from "react";
+import React, { setState } from "react";
 import PropTypes from "prop-types";
 import "./movie-view.scss";
 import { Card, Col, Container, Row, Button } from "react-bootstrap";
@@ -6,8 +6,57 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
 export class MovieView extends React.Component {
+  removeFromFavorite = (event) => {
+    event.preventDefault()
+    console.log("Remove from list:", this.props.movie, this.props.user)
+    const username = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
+        console.log('remove auth', token)
+    
+        axios
+          .delete(
+            `https://agile-dusk-10644.herokuapp.com/users/${username}/movies/${this.props.movie._id}`,
+            {
+              headers: { Authorization:`Bearer ${token}`}
+            }
+          )
+          .then(() => {
+            alert(`${this.props.movie.Title} Was removed from your favorites list`);
+          })
+          .catch((err) => {
+            console.log(err);
+      })
+    }   
+
+    addFavorite = (event) => {
+      event.preventDefault()
+
+      console.log('Add to favorites: ', this.props.movie, this.props.user)
+  
+      const username = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+      console.log('add auth: ', token);
+  
+      axios
+        .post(
+          `https://agile-dusk-10644.herokuapp.com/users/${username}/movies/${this.props.movie._id}`,
+          {},
+          {
+            headers: { Authorization: `Bearer ${token}` }
+          }
+        )
+        .then(() => {
+          alert(`${this.props.movie.Title} was added to your favorites list`);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+
   render() {
+    if (!this.props?.user || !this.props.movie) return <div />
     const { movie, onBackClick } = this.props;
+    const isMovieAFavorite = this.props.user.FavoriteMovies.includes(this.props.movie._id);
     console.log( "Movie", movie);
 
     return (
@@ -51,9 +100,14 @@ export class MovieView extends React.Component {
                   id="movie-view-button"
                   onClick={() => {
                     onBackClick(null);
-                  }}
-                >
-                  Back
+                  }}>Back</Button>
+
+                <Button
+                  variant="primary"
+                  className="custom-btn"
+                  onClick={(event) => 
+                  isMovieAFavorite ? this.removeFromFavorite(event) : this.addFavorite(event)}>
+                { isMovieAFavorite ? 'Remove From Favorites' : 'Add to favorites' }
                 </Button>
               </Card.Body>
             </Card>
