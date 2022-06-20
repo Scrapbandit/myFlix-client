@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 export class MovieView extends React.Component {
   render() {
     const { movie, onBackClick } = this.props;
-    console.log("MOOOVIE", movie);
+    console.log( "Movie", movie);
 
     return (
       <Container>

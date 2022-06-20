@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 };
 
 const onMovieClick = () => {
-  alert("You clicked me");
+  // alert("You clicked me");
 };
 
 function MoviesList(props) {
