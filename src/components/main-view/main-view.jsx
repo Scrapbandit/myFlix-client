@@ -12,6 +12,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { MenuBar } from "../navbar/navbar";
+import { ProfileView } from "../profile-view/profile-view";
 
 export class MainView extends React.Component {
   constructor() {
@@ -191,10 +192,10 @@ export class MainView extends React.Component {
             render={({ history, match }) => {
               if (!user) return;
               <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-              if(movies.length === 0);
-              return <div className="main-view" />;
-              return;
-              <ProfileView
+              if(movies.length === 0)
+               return <div className="main-view" />;
+
+              return <ProfileView
                 history={history}
                 movies={movies}
                 user={user === match.params.username}

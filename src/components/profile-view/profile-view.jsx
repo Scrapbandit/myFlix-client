@@ -120,6 +120,13 @@ export class ProfileView extends React.Component {
         });
     }
 
+    setPassword(value) {
+        this.setState({
+            Password: value
+        });
+    }
+
+
     setEmail(value) {
         this.setState({
             Email: value
@@ -161,6 +168,17 @@ export class ProfileView extends React.Component {
                                         placeholder="Enter a new username"
                                         value={Username}
                                         onChange={(e) => this.setUsername(e.target.value || '')}
+                                        required />
+                                </FormGroup>
+
+                                <FormGroup>
+                                    <Form.Label>Password</Form.Label>
+                                    <FormControl
+                                        type="password"
+                                        name="password"
+                                        placeholder="Enter a new password"
+                                        value={Password}
+                                        onChange={(e) => this.setPassword(e.target.value || '')}
                                         required />
                                 </FormGroup>
 
