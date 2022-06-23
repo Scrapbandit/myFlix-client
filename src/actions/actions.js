@@ -17,11 +17,11 @@ export function setUser(token, user) {
     return { type: SET_USER, value: { token, user } };
   }
   
-  export function addFavMovie(value) {
-    return {
-        type: ADD_FAVMOVIE,
-        value
-    }
+export function addFavMovie(value) {
+  return {
+      type: ADD_FAVMOVIE,
+      value
+  }
 }
 
 export function remFavMovie(value) {

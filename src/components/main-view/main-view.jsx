@@ -18,10 +18,10 @@ export class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      // movies: [],
       selectedMovie: null,
       registered: null,
       user: null,
+      userDetail: {},
     };
   }
 
@@ -31,13 +31,21 @@ export class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        // Assign the result to the state
-        // this.setState({
-        //   movies: response.data
         this.props.setMovies(response.data);
       })
-      //   });
-      // })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  getUser(username, token) {
+    axios
+      .get(`https://agile-dusk-10644.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        this.setState({userDetail: response.data});
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -45,10 +53,12 @@ export class MainView extends React.Component {
 
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
-    if (accessToken !== null) {
+    let username = localStorage.getItem("user")
+    if (accessToken !== null && username) {
       this.setState({
-        user: localStorage.getItem("user"),
+        user: username,
       });
+      this.getUser(username, accessToken);
       this.getMovies(accessToken);
     }
   }
@@ -59,7 +69,6 @@ export class MainView extends React.Component {
   }
 
   onLoggedIn(authData) {
-    console.log(authData);
     this.setState({
       user: authData.user.Username,
     });
@@ -84,23 +93,8 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { selectedMovie, user, registered } = this.state;
+    const { selectedMovie, user, registered, userDetail } = this.state;
     const { movies } = this.props;
-
-    // if (registered) {
-    //   return <RegistrationView onRegister={(bool) => this.onRegister(bool)} />;
-    // }
-
-    // if (!user) {
-    //   return (
-    //     <LoginView
-    //       onLoggedIn={(user) => this.onLoggedIn(user)}
-    //       onRegister={(bool) => this.onRegister(bool)}
-    //     />
-    //   );
-    // }
-
-    // if (movies.length === 0) return <div className="main-view" />;
 
     return (
       <Router>
@@ -117,11 +111,7 @@ export class MainView extends React.Component {
                   </Col>
                 );
               if (movies.length === 0) return <div className="main-view" />;
-              //   return movies.map((m) => (
-              //   <Col md={3} key={m._id}>
-              //     <MovieCard movie={m} />
-              //   </Col>
-              // ))
+              
               return <MoviesList movies={movies} />;
             }}
           />
@@ -143,6 +133,7 @@ export class MainView extends React.Component {
               return (
                 <Col md={8}>
                   <MovieView
+                    user={userDetail}
                     movie={movies.find((m) => m._id === match.params.movieId)}
                     onBackClick={() => history.goBack()}
                   />
